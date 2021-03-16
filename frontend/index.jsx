@@ -1,6 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Root from './components/root';
 
 document.addEventListener('DOMContentLoaded', () => {
-    ReactDOM.render(<h1>Suck my fucking cock :)</h1>, document.getElementById('root'))
+    if (window.currentUser) {
+        preloadedState = {
+            session: {
+                currentUser: window.currentUser
+            }
+        }
+    }
+    ReactDOM.render(<h1>Fuck off</h1>, document.getElementById('root'))
 })
