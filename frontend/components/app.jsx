@@ -1,11 +1,25 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import {
+  Route,
+  Redirect,
+  Switch,
+  Link,
+  HashRouter
+} from 'react-router-dom';
 import SignupContainer from './session/signup_container';
 import {AuthRoute, ProtectedRoute} from '../util/route_utils';
+import SplashContainer from './splash/splash_container'
 
-export default () => {
+const App = () => {
+    return (
     <div>
-        <AuthRoute path='/signup' component={SignupContainer}/>
-        {/* <ProtectedRoute path='/books' component=???/> */}
+        <h1>AriReads</h1>
+        <Switch>
+            <AuthRoute path='/' component={SplashContainer}/>
+            <Route path='/signup' component={SignupContainer}/>
+        </Switch>
     </div>
+    )
 }
+
+export default App;
