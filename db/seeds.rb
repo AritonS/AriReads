@@ -8,4 +8,3 @@
 
 user001 = User.create([{username: 'Ariton'}, {email: 'ariton@ariton.com'}])
 user002 = User.create([{username: 'Lana'}, {email: 'lana@delrey.com'}])
-user003 = User.create([{}])
