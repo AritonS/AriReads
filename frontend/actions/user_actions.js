@@ -1,8 +1,9 @@
 import * as UserApiUtil from '../util/user_api_util';
 
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
-export const RECEIVE_USER = 'RECEIVE_USER';
-export const REMOVE_USER = 'REMOVE_USER';
+export const RECEIVE_CURRENT_USER = 'RECEIVE_USER';
+export const REMOVE_CURRENT_USER = 'REMOVE_USER';
+export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER'
 
 const receiveUsers = users => {
     return {
@@ -13,14 +14,14 @@ const receiveUsers = users => {
 
 const receiveUser = user => {
     return {
-        type: RECEIVE_USER,
+        type: RECEIVE_CURRENT_USER,
         user
     }
 }
 
 const removeUser = userId => {
     return {
-        type: REMOVE_USER,
+        type: REMOVE_CURRENT_USER,
         userId
     }
 }

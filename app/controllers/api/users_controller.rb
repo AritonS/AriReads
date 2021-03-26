@@ -1,6 +1,5 @@
 class Api::UsersController < ApplicationController
     before_action :require_logged_in, only: [:show]
-    before_action :require_logged_out, only: [:new, :create]
 
     def new
         @user = User.new
@@ -22,7 +21,8 @@ class Api::UsersController < ApplicationController
     end
 
     def show
-        
+        @user = User.find_by(params[:id])
+        render 'api/users/show'
     end
 
     private

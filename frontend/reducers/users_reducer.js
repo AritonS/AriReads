@@ -1,4 +1,5 @@
-import { RECEIVE_ALL_USERS, RECEIVE_USER, REMOVE_USER } from '../actions/user_actions';
+import { RECEIVE_ALL_USERS, RECEIVE_CURRENT_USER } from '../actions/user_actions';
+import {LOGOUT_CURRENT_USER} from '../actions/session'
 
 const usersReducer = (oldState = {}, action) => {
     Object.freeze(oldState)
@@ -6,12 +7,12 @@ const usersReducer = (oldState = {}, action) => {
 
     switch (action.type) {
         case RECEIVE_ALL_USERS:
-            return action.posts;
-        case RECEIVE_USER:
-            nextState[action.post.id] = action.post;
+            return action.users;
+        case RECEIVE_CURRENT_USER:
+            nextState[action.user.id] = action.user;
             return nextState;  
-        case REMOVE_USER:
-            delete nextState[action.postId];
+        case LOGOUT_CURRENT_USER:
+            delete nextState[action.userId];
             return nextState;
         default:
             return oldState;

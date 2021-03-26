@@ -21,7 +21,6 @@ class Signup extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.createNewUser(this.state)
-            .then( () => this.props.history.push('/users'))
     }
 
     render() {
@@ -29,20 +28,23 @@ class Signup extends React.Component {
             <div className='session-form'>
                 <h2>Sign Up</h2>
                 <form>
-                    <label>Username: 
+                    <label>
                         <input 
                         type="text" 
+                        placeholder='Username'
                         value={this.state.username}
                         onChange={this.handleInput('username')}/>
                     </label>
-                    <label>Email: 
+                    <label>
                         <input 
-                        type="text" 
+                        type="text"
+                        placeholder='E-mail'
                         value={this.state.email}
                         onChange={this.handleInput('email')}/>
                     </label>
-                    <label>Password: 
+                    <label>
                         <input 
+                        placeholder='Password'
                         type="password" 
                         value={this.state.password}
                         onChange={this.handleInput('password')}/>
