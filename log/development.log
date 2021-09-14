@@ -6441,3 +6441,49 @@ Processing by Api::SessionsController#create as JSON
 Completed 200 OK in 236ms (Views: 18.6ms | ActiveRecord: 2.2ms)
 
 
+Started GET "/" for ::1 at 2021-08-23 09:51:57 -0400
+  [1m[35m (3.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/ariton/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.5/lib/active_record/log_subscriber.rb:98
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  [1m[36mUser Load (26.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+  Rendered static_pages/root.html.erb within layouts/application (41.9ms)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:6
+Completed 200 OK in 1985ms (Views: 1952.6ms | ActiveRecord: 29.9ms)
+
+
+Started POST "/api/users" for ::1 at 2021-08-23 09:52:22 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"username"=>"usersignup", "email"=>"user@signup.com", "password"=>"[FILTERED]"}}
+  [1m[35m (8.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/users_controller.rb:15
+  [1m[36mUser Exists (2.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "usersignup"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "user@signup.com"], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vYAmwQ+thxiKqOhOXkjRRg=="], ["LIMIT", 1]]
+  ↳ app/controllers/api/users_controller.rb:15
+  [1m[36mUser Create (34.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["username", "usersignup"], ["email", "user@signup.com"], ["password_digest", "$2a$12$heaEm0zEqRs9R/myIYvjh.bkFF4JjEQ5U1IFhhY8xFAoRAu5j9Zj2"], ["session_token", "vYAmwQ+thxiKqOhOXkjRRg=="], ["created_at", "2021-08-23 13:52:22.658229"], ["updated_at", "2021-08-23 13:52:22.658229"]]
+  ↳ app/controllers/api/users_controller.rb:15
+  [1m[35m (3.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/users_controller.rb:15
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "usersignup"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "user@signup.com"], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "YVFcRMKvqlNsaExowHF6Zg=="], ["id", 14], ["LIMIT", 1]]
+  ↳ app/models/user.rb:34
+  [1m[36mUser Update (3.4ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "YVFcRMKvqlNsaExowHF6Zg=="], ["updated_at", "2021-08-23 13:52:22.704121"], ["id", 14]]
+  ↳ app/models/user.rb:34
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:34
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.4ms)
+  Rendered api/users/show.json.jbuilder (2.3ms)
+Completed 200 OK in 329ms (Views: 8.5ms | ActiveRecord: 83.3ms)
+
+
