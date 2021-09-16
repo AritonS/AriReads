@@ -18,4 +18,4 @@ const listsReducer = (oldState = {}, action) => {
     }
 }
 
-export default listsReducer
+export default listsReducer;
